@@ -1,0 +1,32 @@
+{
+  "name": "material-at",
+  "version": "1.0.0",
+  "scripts": {
+    "sass:dev": "./node_modules/.bin/gulp",
+    "sass:prod": "./node_modules/.bin/gulp sass:prod"
+  },
+  "dependencies": {
+    "bourbon": "^4.2.3",
+    "breakpoint-sass": "^2.6.1",
+    "compass-mixins": "^0.12.7",
+    "font-awesome": "^4.4.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.1.0",
+    "node-sass": "^3.4.1",
+    "sass": "^0.5.0",
+    "singularitygs": "^1.6.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-minify": "0.0.5",
+    "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.3.3",
+    "susy": "^2.2.2-alpha.1"
+  }
+}

@@ -1,0 +1,49 @@
+// main: _material.scss
+
+.popover, .tooltip-inner {
+    background: #323232;
+    color: #FFF;
+    border-radius: 2px;
+
+}
+
+.tooltip, .tooltip.in {
+    opacity: 1;
+}
+input.form-control {
+    height: 34px;
+}
+.modal {
+    top: 50px;
+    overflow-y: hidden !important;
+    z-index: 9999;
+    bottom: 20px;
+    .modal-header {
+        background: #fff;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        .close_modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+        }
+    }
+    .modal-content {
+        overflow-y: scroll !important;
+    }
+}
+.popover, .tooltip {
+    &.left .arrow:after, &.left .tooltip-arrow {
+        border-left-color: #323232;
+    }
+    &.right .arrow:after, &.right .tooltip-arrow {
+        border-right-color: #323232;
+    }
+    &.top .arrow:after, &.top .tooltip-arrow {
+        border-top-color: #323232;
+    }
+    &.bottom .arrow:after, &.bottom .tooltip-arrow {
+        border-bottom-color: #323232;
+    }
+}
