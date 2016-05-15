@@ -21,7 +21,7 @@
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php material_at_posted_on(); ?>
+			<?php materialistic_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
@@ -33,12 +33,12 @@
 		<?php
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'material-at' ), array( 'span' => array( 'class' => array() ) ) ),
+				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'materialistic' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
 
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'material-at' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'materialistic' ),
 				'after'  => '</div>',
 			) );
 		?>
@@ -48,7 +48,7 @@
 	<footer class="entry-footer">
             <div class="bs-component col-md-6">
                 <ul class="nav nav-tabs">
-		<?php material_at_entry_footer(); ?>
+		<?php materialistic_entry_footer(); ?>
                 </ul>
             </div>
 	</footer>
@@ -58,7 +58,7 @@
 <div id="PostEditor" class="modal front-end_editor fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-header">
-          <h4 class="modal-title"><?php print __("Edit ",'material-at').the_title( '', '', false ); ?> </h4><i class="icon icon-material-clear close_modal" data-dismiss="modal" aria-hidden="true"></i>
+          <h4 class="modal-title"><?php print __("Edit ",'materialistic').the_title( '', '', false ); ?> </h4><i class="icon icon-material-clear close_modal" data-dismiss="modal" aria-hidden="true"></i>
       </div>
         <div class="modal-content">
         <div class="embed-responsive embed-responsive-16by9">

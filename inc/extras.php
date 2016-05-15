@@ -13,7 +13,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function material_at_body_classes( $classes ) {
+function materialistic_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -26,4 +26,4 @@ function material_at_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'material_at_body_classes' );
+add_filter( 'body_class', 'materialistic_body_classes' );

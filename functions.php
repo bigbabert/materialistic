@@ -7,7 +7,7 @@
  * @package materialistic
  */
 
-if ( ! function_exists( 'material_at_setup' ) ) :
+if ( ! function_exists( 'materialistic_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -15,14 +15,14 @@ if ( ! function_exists( 'material_at_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function material_at_setup() {
+function materialistic_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on materialistic, use a find and replace
-	 * to change 'material-at' to the name of your theme in all the template files.
+	 * to change 'materialistic' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'material-at', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'materialistic', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -105,7 +105,7 @@ class Material_AT_Nav_Menu extends Walker_Nav_Menu {
 
 }
         register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'material-at' ),
+		'primary' => esc_html__( 'Primary', 'materialistic' ),
 	) );
 
 	/*
@@ -133,13 +133,13 @@ class Material_AT_Nav_Menu extends Walker_Nav_Menu {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'material_at_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'materialistic_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
 }
 endif;
-add_action( 'after_setup_theme', 'material_at_setup' );
+add_action( 'after_setup_theme', 'materialistic_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -148,55 +148,62 @@ add_action( 'after_setup_theme', 'material_at_setup' );
  *
  * @global int $content_width
  */
-function material_at_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'material_at_content_width', 1024 );
+function materialistic_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'materialistic_content_width', 1024 );
 }
-add_action( 'after_setup_theme', 'material_at_content_width', 0 );
+add_action( 'after_setup_theme', 'materialistic_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function material_at_widgets_init() {
+function materialistic_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'material-at' ),
+		'name'          => esc_html__( 'Sidebar', 'materialistic' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'material-at' ),
+		'description'   => esc_html__( 'Add widgets here.', 'materialistic' ),
 		'before_widget' => '<div id="%1$s" class="widget col-md-4 %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title"><i class="icon icon-material-check"></i> ',
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'material_at_widgets_init' );
+add_action( 'widgets_init', 'materialistic_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function material_at_scripts() {
-	wp_enqueue_style( 'material-at-style', get_stylesheet_uri() );
+function materialistic_scripts() {
+	wp_enqueue_style( 'materialistic-style', get_stylesheet_uri() );
 
-        wp_enqueue_script( 'material-at-jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', array(), '20151215', true );
+        wp_enqueue_script( 'materialistic-jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', array(), '20151215', false );
         
-        wp_enqueue_script( 'material-at-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20151215', true );            
+        wp_enqueue_script( 'materialistic-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20151215', false );            
         
-        wp_enqueue_script( 'material-at-main', get_template_directory_uri() . '/js/material-at.js', array(), '20151215', true );
+        wp_enqueue_script( 'materialistic-main', get_template_directory_uri() . '/js/materialistic.js', array(), '20151215', true );
         
-	wp_enqueue_script( 'material-at-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'materialistic-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
+        if (true === get_theme_mod('materialistic_slider_opt')) {
+                if(true === get_theme_mod('materialistic_sticky_header')) {
+                wp_enqueue_script( 'materialistic-sticky_header', get_template_directory_uri() . '/js/header_sticky.js', array(), '20151215', true );
+                } else {
+                wp_enqueue_script( 'materialistic-header', get_template_directory_uri() . '/js/header.js', array(), '20151215', true );
+                }
+            }        
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'material_at_scripts' );
+add_action( 'wp_enqueue_scripts', 'materialistic_scripts' );
 /**
  * Implement Slides Post Type feature.
  */
 if ( ! function_exists('slides_post_type') ) {
 
 // Register Custom Post Type
-function material_at_slides_post_type() {
+function materialistic_slides_post_type() {
 	$labels = array(
 		'name' => 'Slides',
 		'singular_name' => 'Slide',
@@ -231,7 +238,7 @@ function material_at_slides_post_type() {
 
 	register_post_type( 'slide', $args );
 }
-add_action( 'init', 'material_at_slides_post_type' );}
+add_action( 'init', 'materialistic_slides_post_type' );}
 /**
  * Implement the Custom Header feature.
  */
@@ -258,11 +265,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 // Add specific CSS class by filter
-add_filter( 'body_class', 'material_at_class_names' );
-function material_at_class_names( $classes ) {
+add_filter( 'body_class', 'materialistic_class_names' );
+function materialistic_class_names( $classes ) {
 	// add 'class-name' to the $classes array
 	$classes[] = 'material-at';
-        if(true === get_theme_mod('material_at_sticky_header')){
+        if(true === get_theme_mod('materialistic_sticky_header')){
 	$classes[] = 'sticky-header';
         }        
 	// return the $classes array

@@ -15,7 +15,7 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php material_at_posted_on(); ?>
+			<?php materialistic_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
@@ -27,7 +27,7 @@
 	<footer class="entry-footer">
             <div class="bs-component">
                 <ul class="nav nav-tabs">
-		<?php material_at_entry_footer(); ?>
+		<?php materialistic_entry_footer(); ?>
                 </ul>
             </div>
         </footer><!-- .entry-footer -->

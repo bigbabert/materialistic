@@ -82,7 +82,25 @@ $(function (){
     });
     
     //Start material-at Customization
-    
+    function fullscreen(){
+        var width = $(window).width();
+        var navHeight =  $("#masthead").outerHeight();
+        var height = $(window).height() - navHeight;
+        $('#materialistic_Carousel').css({
+            width: width,
+            height: height
+        });
+    }
+  if ($("body").hasClass("home")) {
+    fullscreen();
+  }
+        // Run the function in case of window resize
+        $(window).resize(function() {
+        if ($("body").hasClass("home")) {
+          fullscreen();
+        }
+      });
+
     //Admin Bar margin
     if ($("body").hasClass("admin-bar") && $(".navbar-default").hasClass("sticky_head")) {
         var adminBarH = $("#wpadminbar").height();

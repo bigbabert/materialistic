@@ -141,15 +141,17 @@ select {
 	text-transform: none;
 }
 a.navbar-brand, .navbar .navbar-brand {
-    position: relative;
-    top: 5px;
-    bottom: 0;
-    left: 10px;
-    padding: 0;
-    margin: 0 20px 0 0;
-    width: auto;
-    height: 70px;
-    overflow: hidden;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 16px;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        vertical-align: middle;
+        line-height: 3.5;
+        width: auto;
+        overflow: hidden;
     @media all and (max-width: 736px) {
     position: absolute;
     }
